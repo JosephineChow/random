@@ -1,0 +1,25 @@
+PING 77.243.191.121 (77.243.191.121) 56(84) bytes of data.
+64 bytes from 77.243.191.121: icmp_seq=1 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=2 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=3 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=4 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=5 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=6 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=7 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=8 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=9 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=10 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=11 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=12 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=13 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=14 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=15 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=16 ttl=41 time=235 ms
+64 bytes from 77.243.191.121: icmp_seq=17 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=18 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=19 ttl=41 time=230 ms
+64 bytes from 77.243.191.121: icmp_seq=20 ttl=41 time=230 ms
+
+--- 77.243.191.121 ping statistics ---
+20 packets transmitted, 20 received, 0% packet loss, time 19002ms
+rtt min/avg/max/mdev = 230.012/230.377/235.574/1.333 ms
