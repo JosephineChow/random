@@ -1,0 +1,25 @@
+PING 205.185.214.115 (205.185.214.115) 56(84) bytes of data.
+64 bytes from 205.185.214.115: icmp_seq=1 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=2 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=3 ttl=42 time=30.6 ms
+64 bytes from 205.185.214.115: icmp_seq=4 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=5 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=6 ttl=42 time=30.4 ms
+64 bytes from 205.185.214.115: icmp_seq=7 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=8 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=9 ttl=42 time=30.4 ms
+64 bytes from 205.185.214.115: icmp_seq=10 ttl=42 time=30.8 ms
+64 bytes from 205.185.214.115: icmp_seq=11 ttl=42 time=30.9 ms
+64 bytes from 205.185.214.115: icmp_seq=12 ttl=42 time=30.6 ms
+64 bytes from 205.185.214.115: icmp_seq=13 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=14 ttl=42 time=30.4 ms
+64 bytes from 205.185.214.115: icmp_seq=15 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=16 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=17 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=18 ttl=42 time=30.4 ms
+64 bytes from 205.185.214.115: icmp_seq=19 ttl=42 time=30.5 ms
+64 bytes from 205.185.214.115: icmp_seq=20 ttl=42 time=30.5 ms
+
+--- 205.185.214.115 ping statistics ---
+20 packets transmitted, 20 received, 0% packet loss, time 19033ms
+rtt min/avg/max/mdev = 30.471/30.575/30.918/0.253 ms
