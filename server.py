@@ -32,5 +32,5 @@ class ThreadedServer(object):
         client.close()
 
 if __name__ == "__main__":
-    port_num = 80
+    port_num = 5005
     ThreadedServer('',port_num).listen()
