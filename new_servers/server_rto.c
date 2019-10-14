@@ -45,6 +45,7 @@ void bytes_exchange(int sock) {
 }//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
+	printf("Hello\n");
 	int socket = (int) sock;
 	struct tcp_info info;
 	socklen_t info_size = sizeof(info);
