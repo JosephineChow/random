@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -13,14 +14,35 @@
 
 static const int MAXPENDING = 100; // Maximum outstanding connection requests
 void *HandleTCPClient(void* sock);
-void bytes_read(int sock, int num_bytes, uint8_t *buff);
+void bytes_exchange(int sock);
+void bytes_read_from_file(char *buff);
 
-void bytes_read(int sock, int num_bytes, uint8_t *buff) {
+
+/*
+	Read 5 kilo bytes from /dev/random
+*/
+void bytes_read_from_file(char *buff) {
+	FILE *fileptr;
+	fileptr = fopen("/dev/random","rb");
+	fread(buff, 5000, 1, fileptr); 
+}//end bytes_read_from_file 
+
+
+/*
+	Every time we get 500 bytes from client, we should send 5 kilobytes back
+*/
+void bytes_exchange(int sock) {
 	int totalRecv = 0;
-	while (totalRecv < num_bytes) {
-		totalRecv += recv(sock, buff+totalRecv, num_bytes-totalRecv, 0);
+	int num_bytes_rcv = 500;
+	char buff[500];
+	char random[5000];
+	bytes_read_from_file(&random);
+	while (totalRecv < num_bytes_rcv) {
+		totalRecv += recv(sock, buff+totalRecv, num_bytes_rcv-totalRecv, 0);
 	}//end while
-}//end bytes_read
+	// ssize_t send(int sockfd, const void *buf, size_t len, int flags);
+	send(sock,random,5000,0);
+}//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
 	int socket = (int) sock;
@@ -28,9 +50,18 @@ void *HandleTCPClient(void* sock) {
 	socklen_t info_size = sizeof(info);
 	if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
 		// in microseconds.. ? u? 
-		printf("RTO: %f\n", info.tcpi_rto/1000000.);
-        printf("RTT: %f\n", info.tcpi_rtt/1000000.);
+		struct tm *tm_struct = localtime(time(NULL));
+
+		//printf("RTO: %f\n", info.tcpi_rto/1000000.);
+        //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
+
+        //timestamp(M-D-Y,h:m:s) tcpi_rto tcpi_rtt tcpi_rttvar __tcpi_ato 
+        printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
+        	tm_struct->tm_mon, tm_struct->tm_mday, tm_struct->tm_year,
+        	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
+        	info.tcpi_rto, info.tcpi_rtt, info.tcpi_rttvar, info.__tcpi_ato);
 	}//end if
+	bytes_exchange(socket);
 	close(socket);
 	pthread_exit(0);
 	return 0;
@@ -43,7 +74,8 @@ int main(int argc, char** argv) {
 		port = atoi(argv[1]);
 	} //end if
 	else {
-		exit(1);
+		//exit(1);
+		port = 5007;
 	} //end else
 
 	// Create socket for incoming connections
@@ -75,6 +107,7 @@ int main(int argc, char** argv) {
 		printf("Socket refuses to listen");
 		exit(0);
 	}//end if
+
 	pthread_t thread_id;
 
 	for (;;) { // Run forever

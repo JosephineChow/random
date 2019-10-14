@@ -7,13 +7,13 @@ import time
 if len(sys.argv) == 2:
     print "Using IP: " + sys.argv[1]
     TCP_IP = sys.argv[1]
+    TCP_PORT = sys.argv[2]
 else:
-	print "Defaulting to 52.26.176.186"
-	TCP_IP = '52.26.176.186' 
-print TCP_IP
+	print "Defaulting to localhost"
+	TCP_IP = '127.0.0.1'
+    TCP_PORT = 5005
+
 	
-TCP_PORT = 5005
-#TCP_PORT = 80
 BUFFER_SIZE = 1024
 #MESSAGE = "GOODBYE WOLRD"
 
