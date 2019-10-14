@@ -60,7 +60,7 @@ void *HandleTCPClient(void* sock) {
         printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
         	tm_struct->tm_mon, tm_struct->tm_mday, tm_struct->tm_year,
         	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
-        	info.tcpi_rto, info.tcpi_rtt, info.tcpi_rttvar, info.tcpi_ato);
+        	info.tcpi_rto/1000000., info.tcpi_rtt, info.tcpi_rttvar, info.tcpi_ato);
 	}//end if
 	bytes_exchange(socket);
 	close(socket);
