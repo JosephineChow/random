@@ -53,6 +53,7 @@ void bytes_exchange(int sock) {
 }//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
+	printf("someone is trying to connect\n");
 	int socket = (int) sock;
 	int req;
 	int num_req = 10;
