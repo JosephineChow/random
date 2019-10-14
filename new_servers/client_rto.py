@@ -22,9 +22,11 @@ else: # nothing is supplied
 BUFFER_SIZE = 5000
 
 def syn_test(f,sock):
+    global count
     request = f.read(500) # get 500 bytes from /dev/random to avoid compression
     sock.send(request) # send request 
     data = sock.recv(BUFFER_SIZE) # recv 5 kilo bytes response from server
+
 
 def connect_ec2():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
