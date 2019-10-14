@@ -60,7 +60,6 @@ void *HandleTCPClient(void* sock) {
 		struct tcp_info info;
 		socklen_t info_size = sizeof(info);
 		if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
-			printf("in here?\n");
 			// in microseconds.. ? u? 
 			time_t rawtime = time(0); 
 			struct tm *tm_struct = localtime(&rawtime);
@@ -72,7 +71,7 @@ void *HandleTCPClient(void* sock) {
 	        printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
 	        	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
 	        	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
-	        	info.tcpi_rto, info.tcpi_rtt, info.tcpi_rttvar, info.tcpi_ato);
+	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
 	        bytes_exchange(socket);
 		}//end if
 	}//end for 
