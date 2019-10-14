@@ -13,9 +13,9 @@ elif len(sys.argv) == 3: # port is supplied
     print "Using Port: " + sys.argv[2]
     TCP_IP = sys.argv[1]
     TCP_PORT = sys.argv[2]
-else: # nothing is supplied 
-	print "Defaulting to localhost"
-	TCP_IP = '127.0.0.1'
+else: # nothing is supplied
+    print "Defaulting to localhost"
+    TCP_IP = '127.0.0.1'
     TCP_PORT = 5007
 
 	

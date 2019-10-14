@@ -50,7 +50,7 @@ void *HandleTCPClient(void* sock) {
 	socklen_t info_size = sizeof(info);
 	if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
 		// in microseconds.. ? u? 
-		struct tm *tm_struct = localtime((int)time(NULL));
+		struct tm *tm_struct = localtime(time(NULL));
 
 		//printf("RTO: %f\n", info.tcpi_rto/1000000.);
         //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
