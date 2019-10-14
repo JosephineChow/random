@@ -58,8 +58,6 @@ void *HandleTCPClient(void* sock) {
         //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
 
         //timestamp(M-D-Y,h:m:s) tcpi_rto tcpi_rtt tcpi_rttvar __tcpi_ato 
-	printf("%d\n",tm_struct->tm_mon);
-	printf("%s\n", asctime(tm_struct));
         printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
         	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
         	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
