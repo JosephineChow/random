@@ -36,7 +36,7 @@ void bytes_exchange(int sock) {
 	int num_bytes_rcv = 500;
 	char buff[500];
 	char random[5000];
-	bytes_read_from_file(&random);
+	bytes_read_from_file(random);
 	while (totalRecv < num_bytes_rcv) {
 		totalRecv += recv(sock, buff+totalRecv, num_bytes_rcv-totalRecv, 0);
 	}//end while
@@ -50,7 +50,7 @@ void *HandleTCPClient(void* sock) {
 	socklen_t info_size = sizeof(info);
 	if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
 		// in microseconds.. ? u? 
-		struct tm *tm_struct = localtime(time(NULL));
+		struct tm *tm_struct = localtime((int)time(NULL));
 
 		//printf("RTO: %f\n", info.tcpi_rto/1000000.);
         //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
