@@ -45,22 +45,26 @@ void bytes_exchange(int sock) {
 }//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
-	printf("Hello\n");
 	int socket = (int) sock;
 	struct tcp_info info;
 	socklen_t info_size = sizeof(info);
 	if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
+		printf("in here?\n");
 		// in microseconds.. ? u? 
-		struct tm *tm_struct = localtime(time(NULL));
+		time_t rawtime = time(0); 
+		struct tm *tm_struct = localtime(&rawtime);
 
 		//printf("RTO: %f\n", info.tcpi_rto/1000000.);
         //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
 
         //timestamp(M-D-Y,h:m:s) tcpi_rto tcpi_rtt tcpi_rttvar __tcpi_ato 
+	printf("%d\n",tm_struct->tm_mon);
+	printf("%s\n", asctime(tm_struct));
         printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
-        	tm_struct->tm_mon, tm_struct->tm_mday, tm_struct->tm_year,
+        	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
         	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
         	info.tcpi_rto, info.tcpi_rtt, info.tcpi_rttvar, info.tcpi_ato);
+		
 	}//end if
 	bytes_exchange(socket);
 	close(socket);
