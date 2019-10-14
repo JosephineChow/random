@@ -16,6 +16,7 @@ static const int MAXPENDING = 100; // Maximum outstanding connection requests
 void *HandleTCPClient(void* sock);
 void bytes_exchange(int sock);
 void bytes_read_from_file(char *buff);
+void bytes_random(char *buff);
 
 
 /*
@@ -27,6 +28,12 @@ void bytes_read_from_file(char *buff) {
 	fread(buff, 5000, 1, fileptr); 
 }//end bytes_read_from_file 
 
+void bytes_random(char *buff) {
+	for(int i=0; i<5000; i++) {
+		buff[i] = rand();
+	}//end for 
+}//end bytes_random 
+
 
 /*
 	Every time we get 500 bytes from client, we should send 5 kilobytes back
@@ -36,7 +43,8 @@ void bytes_exchange(int sock) {
 	int num_bytes_rcv = 500;
 	char buff[500];
 	char random[5000];
-	bytes_read_from_file(random);
+	bytes_random(random);
+	//bytes_read_from_file(random);
 	while (totalRecv < num_bytes_rcv) {
 		totalRecv += recv(sock, buff+totalRecv, num_bytes_rcv-totalRecv, 0);
 	}//end while
@@ -46,9 +54,9 @@ void bytes_exchange(int sock) {
 
 void *HandleTCPClient(void* sock) {
 	int socket = (int) sock;
-	int req = 0;
+	int req;
 	int num_req = 10;
-	for(req<num_req;req++) {
+	for(req=0;req<num_req;req++) {
 		struct tcp_info info;
 		socklen_t info_size = sizeof(info);
 		if (getsockopt(socket, SOL_TCP, TCP_INFO, (void *) &info, &info_size) == 0) {
@@ -104,9 +112,7 @@ int main(int argc, char** argv) {
 	if (bind(servSock, (struct sockaddr*) &servAddr, sizeof(servAddr)) < 0) {
 		printf("Cannot bind to local address");
 		exit(0);
-
 	}//end if
-
 
 	// set the socket to LISTEN
 	// Mark the socket so it will listen for incoming connections
@@ -153,6 +159,7 @@ int main(int argc, char** argv) {
 		}//end if
 	}
 	// NOT reached
+	printf("I should not be here\n");
 	return -1;
 } //end main
 
