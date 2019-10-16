@@ -138,12 +138,14 @@ int main(int argc, char** argv) {
 		if (clntSock < 0)
 			return -1;
 
+
+
 		// clntSock is connected to a client!
 		char clntName[INET_ADDRSTRLEN]; // String to contain client address
 
 		//inet_ntop: takes the binary representation of the client’s address and converts it to a dotted-quad string.
 		if (inet_ntop(AF_INET, &clntAddr.sin_addr.s_addr, clntName, sizeof(clntName)) != NULL) {
-			//printf("Handling client %s/%d\n", clntName, ntohs(clntAddr.sin_port));
+			printf("Handling client %s/%d\n", clntName, ntohs(clntAddr.sin_port));
         }//end if
 		else
 			puts("Unable to get client address");
