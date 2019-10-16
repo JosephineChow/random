@@ -4,13 +4,13 @@ import multiprocessing
 import sys
 import time
 
-if len(sys.argv) == 2:
+if len(sys.argv) == 3:
     print "Using IP: " + sys.argv[1]
     TCP_IP = sys.argv[1]
-    TCP_PORT = sys.argv[2]
+    TCP_PORT = int(sys.argv[2])
 else:
-	print "Defaulting to localhost"
-	TCP_IP = '127.0.0.1'
+    print "Defaulting to localhost"
+    TCP_IP = '127.0.0.1'
     TCP_PORT = 5005
 
 	
@@ -22,6 +22,7 @@ def syn_test(num):
     s.connect((TCP_IP,TCP_PORT))
     #s.send(MESSAGE + str(num))
     #data = s.recv(BUFFER_SIZE)
+    print("connected")
     time.sleep(1.5) 
     s.close()
 
