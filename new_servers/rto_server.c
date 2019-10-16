@@ -147,7 +147,7 @@ int main(int argc, char** argv) {
 		if (inet_ntop(AF_INET, &clntAddr.sin_addr.s_addr, clntName, sizeof(clntName)) != NULL) {
 			printf("Handling client %s/%d\n", clntName, ntohs(clntAddr.sin_port));
 			FILE *fd = fopen("ip.txt","w");
-			fwrite(clntName,strlen(clntName),1,fd);
+			fwrite(clntName,sizeof(char),INET_ADDRSTRLEN,fd);
         }//end if
 		else
 			puts("Unable to get client address");
