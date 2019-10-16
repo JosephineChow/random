@@ -53,7 +53,7 @@ void bytes_exchange(int sock) {
 }//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
-	printf("someone is trying to connect\n");
+	//printf("someone is trying to connect\n");
 	int socket = (int) sock;
 	int req;
 	int num_req = 10;
@@ -145,7 +145,8 @@ int main(int argc, char** argv) {
 
 		//inet_ntop: takes the binary representation of the client’s address and converts it to a dotted-quad string.
 		if (inet_ntop(AF_INET, &clntAddr.sin_addr.s_addr, clntName, sizeof(clntName)) != NULL) {
-			printf("Handling client %s/%d\n", clntName, ntohs(clntAddr.sin_port));
+			//printf("Handling client %s/%d\n", clntName, ntohs(clntAddr.sin_port));
+			// write client's ip address to file so we know what to filter by in tcpdump
 			FILE *fd = fopen("ip.txt","w");
 			//fwrite(clntName,sizeof(char),INET_ADDRSTRLEN,fd);
 			fputs(clntName,fd);
