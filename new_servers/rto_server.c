@@ -65,13 +65,21 @@ void *HandleTCPClient(void* sock) {
 			time_t rawtime = time(0); 
 			struct tm *tm_struct = localtime(&rawtime);
 
+			struct timeval tv = gettimeofday(NULL);
+
+
 			//printf("RTO: %f\n", info.tcpi_rto/1000000.);
 	        //printf("RTT: %f\n", info.tcpi_rtt/1000000.);
-
+			//
 	        //timestamp(M-D-Y,h:m:s) tcpi_rto tcpi_rtt tcpi_rttvar __tcpi_ato 
+	        /*
 	        printf("%d-%d-%d,%d:%d:%d \t%f\t%f\t%f\t%f\n",
 	        	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
 	        	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
+	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
+	        	*/
+			printf("%f\t%f\t%f\t%f\t%f\n",
+	        	tv.tv_sec + tv.tv_usec / 1000000.0,
 	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
 	        bytes_exchange(socket);
 		}//end if
