@@ -77,10 +77,13 @@ void *HandleTCPClient(void* sock) {
 	        	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
 	        	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
 	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
+
 	        	*/
 			printf("%f\t%f\t%f\t%f\t%f\n",
 	        	tv.tv_sec + tv.tv_usec / 1000000.0,
 	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
+
+		fflush(stdout);
 	        bytes_exchange(socket);
 		}//end if
 	}//end for 
@@ -91,6 +94,7 @@ void *HandleTCPClient(void* sock) {
 }//end HandleTCPClient
 
 int main(int argc, char** argv) {
+	printf("void* = %d\nint = %d\n", sizeof(void*), sizeof(int));
 	int port;
 	// take in a port from argv 
 	if (argc == 2) {
@@ -107,6 +111,13 @@ int main(int argc, char** argv) {
 		printf("Cannot create socket");
 		exit(-1);
 	} //end if
+
+	// Make sure that the addr can be reused
+	int enable = 1;
+	if(setsockopt(servSock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) {
+		printf("Cannot reuseaddr");
+		exit(-1);
+	} //endif
 
 	// Fill in desired endpoint address
 	// Construct local address structure
