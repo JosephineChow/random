@@ -19,15 +19,21 @@ else: # nothing is supplied
     TCP_PORT = 5007
 
 	
-BUFFER_SIZE = 5000
+BUFFER_SIZE = 500000
 
 def syn_test(f,sock):
     global count
     request = f.read(500) # get 500 bytes from /dev/random to avoid compression
     sock.send(request) # send request 
-    data = sock.recv(BUFFER_SIZE) # recv 5 kilo bytes response from server
-    print(data[0])
-
+    # data = sock.recv(BUFFER_SIZE) # recv 5 kilo bytes response from server
+    # print(data[0])
+    data = bytearray()
+    n = BUFFER_SIZE
+    while len(data) < n:
+        packet = sock.recv(n - len(data))
+        if not packet:
+            return None
+        data.extend(packet)
 
 def connect_ec2():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
