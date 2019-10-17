@@ -73,6 +73,7 @@ void *HandleTCPClient(void* sock) {
 	        	tm_struct->tm_mon, tm_struct->tm_mday+1, tm_struct->tm_year+1900,
 	        	tm_struct->tm_hour, tm_struct->tm_min, tm_struct->tm_sec,
 	        	info.tcpi_rto/1000000., info.tcpi_rtt/1000000., info.tcpi_rttvar, info.tcpi_ato/1000000.);
+		fflush(stdout);
 	        bytes_exchange(socket);
 		}//end if
 	}//end for 
