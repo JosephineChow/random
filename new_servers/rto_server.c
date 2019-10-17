@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <sys/time.h>
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <netinet/in.h>
@@ -25,11 +26,11 @@ void bytes_random(char *buff);
 void bytes_read_from_file(char *buff) {
 	FILE *fileptr;
 	fileptr = fopen("/dev/random","rb");
-	fread(buff, 5000, 1, fileptr); 
+	fread(buff, 500000, 1, fileptr); 
 }//end bytes_read_from_file 
 
 void bytes_random(char *buff) {
-	for(int i=0; i<5000; i++) {
+	for(int i=0; i<500000; i++) {
 		buff[i] = rand();
 	}//end for 
 }//end bytes_random 
@@ -42,14 +43,20 @@ void bytes_exchange(int sock) {
 	int totalRecv = 0;
 	int num_bytes_rcv = 500;
 	char buff[500];
-	char random[5000];
+	char random[500000];
 	bytes_random(random);
 	//bytes_read_from_file(random);
 	while (totalRecv < num_bytes_rcv) {
 		totalRecv += recv(sock, buff+totalRecv, num_bytes_rcv-totalRecv, 0);
 	}//end while
 	// ssize_t send(int sockfd, const void *buf, size_t len, int flags);
-	send(sock,random,5000,0);
+	size_t bts = 500000; // bytes to send
+	size_t ttl_sent = 0; // total bytes sent
+	while(bts > 0) {
+		size_t s = send(sock,random+ttl_sent,bts,0);
+		ttl_sent += s;
+		bts -= s;
+	}
 }//end bytes_exchange
 
 void *HandleTCPClient(void* sock) {
@@ -65,7 +72,8 @@ void *HandleTCPClient(void* sock) {
 			time_t rawtime = time(0); 
 			struct tm *tm_struct = localtime(&rawtime);
 
-			struct timeval tv = gettimeofday(NULL);
+			struct timeval tv;
+		       	gettimeofday(&tv, NULL);
 
 
 			//printf("RTO: %f\n", info.tcpi_rto/1000000.);
