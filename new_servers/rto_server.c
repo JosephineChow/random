@@ -84,6 +84,7 @@ void *HandleTCPClient(void* sock) {
 }//end HandleTCPClient
 
 int main(int argc, char** argv) {
+	printf("void* = %d\nint = %d\n", sizeof(void*), sizeof(int));
 	int port;
 	// take in a port from argv 
 	if (argc == 2) {
@@ -100,6 +101,13 @@ int main(int argc, char** argv) {
 		printf("Cannot create socket");
 		exit(-1);
 	} //end if
+
+	// Make sure that the addr can be reused
+	int enable = 1;
+	if(setsockopt(servSock, SOL_SOCKET, SO_REUSEADDR, &enable, sizeof(int)) < 0) {
+		printf("Cannot reuseaddr");
+		exit(-1);
+	} //endif
 
 	// Fill in desired endpoint address
 	// Construct local address structure
