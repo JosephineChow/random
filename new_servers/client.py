@@ -27,7 +27,7 @@ def syn_test(num):
     s.connect((TCP_IP,TCP_PORT))
     #s.send(MESSAGE + str(num))
     #data = s.recv(BUFFER_SIZE)
-    print("connected")
+    #print("connected")
     time.sleep(1.5) 
     s.close()
 
