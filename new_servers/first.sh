@@ -2,11 +2,6 @@
 
 # This script takes 2 arguments, 1) naming convention 2) VPN IP 
 
-sudo yum -y install git 
-sudo yum -y install gcc 
-git clone https://github.com/josephinechow/random > out.txt 2>err.txt 
-
-
 cd random/new_servers 
 rm -f ip.txt 
 ping $2 -c 100 > $1_server_ping.txt 
