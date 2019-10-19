@@ -2,7 +2,6 @@
 
 # This script takes 2 arguments, 1) naming convention 2) VPN IP 
 
-cd random/new_servers 
 rm -f ip.txt 
 ping $2 -c 100 > $1_server_ping.txt 
 gcc -pthread rto_server.c -o rto >> out.txt 2>>err.txt 
