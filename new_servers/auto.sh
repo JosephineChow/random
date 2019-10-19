@@ -15,16 +15,14 @@ ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.
 
 
 # setup.sh takes naming convention then VPN's IP address 
-ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.com  'cd random/new_servers && ./first.sh $2 $VPN' 
-
-exit
+ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.com  "cd random/new_servers && ./first.sh $2 $VPN"
 
 
 echo 'about to spin up client rto'
 ./client_rto.py $1.compute.amazonaws.com
 
 
-ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.com ./second.sh $2 $VPN
+ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.com "cd random/new_servers && ./second.sh $2 $VPN"
 
 
 echo 'about to spin up client tcp handshakes'
