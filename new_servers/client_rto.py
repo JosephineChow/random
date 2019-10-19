@@ -29,11 +29,15 @@ def syn_test(f,sock):
     # print(data[0])
     data = bytearray()
     n = BUFFER_SIZE
-    while len(data) < n:
-        packet = sock.recv(n - len(data))
-        if not packet:
-            return None
-        data.extend(packet)
+    try:
+        while len(data) < n:
+            packet = sock.recv(n - len(data))
+            if not packet:
+                return None
+            data.extend(packet)
+    except Exception as e: 
+        print("something went wrong!")
+        print(e)
 
 def connect_ec2():
     s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
