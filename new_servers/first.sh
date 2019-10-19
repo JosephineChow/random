@@ -4,9 +4,11 @@
 
 echo $1 >> out.txt
 echo $2 >> out.txt
-exit 
+
 rm -f ip.txt 
+touch before_server_ping
 ping $2 -c 100 > $1_server_ping.txt 
+touch post_server_ping
 gcc -pthread rto_server.c -o rto >> out.txt 2>>err.txt 
 
 nohup ./rto > $1_rto.txt &
