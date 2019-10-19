@@ -21,7 +21,7 @@ ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.
 echo 'about to spin up client rto'
 ./client_rto.py $1.compute.amazonaws.com
 
-
+echo 'finished running client rto'
 ssh -i "aws_dave.pem" -o StrictHostKeyChecking=no ec2-user@$1.compute.amazonaws.com "cd random/new_servers && ./second.sh $2 $VPN"
 
 

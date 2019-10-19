@@ -8,6 +8,11 @@ if len(sys.argv) == 3:
     print "Using IP: " + sys.argv[1]
     TCP_IP = sys.argv[1]
     TCP_PORT = int(sys.argv[2])
+elif len(sys.argv) == 2:
+    print "Using IP: " + sys.argv[1]
+    TCP_IP = sys.argv[1]
+    TCP_PORT = 5005
+
 else:
     print "Defaulting to localhost"
     TCP_IP = '127.0.0.1'
