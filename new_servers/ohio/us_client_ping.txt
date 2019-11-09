@@ -1,0 +1,35 @@
+PING 50.3.173.187 (50.3.173.187): 56 data bytes
+64 bytes from 50.3.173.187: icmp_seq=0 ttl=50 time=158.198 ms
+64 bytes from 50.3.173.187: icmp_seq=1 ttl=50 time=166.095 ms
+64 bytes from 50.3.173.187: icmp_seq=2 ttl=50 time=161.136 ms
+64 bytes from 50.3.173.187: icmp_seq=3 ttl=50 time=155.679 ms
+64 bytes from 50.3.173.187: icmp_seq=4 ttl=50 time=155.997 ms
+64 bytes from 50.3.173.187: icmp_seq=5 ttl=50 time=159.426 ms
+64 bytes from 50.3.173.187: icmp_seq=6 ttl=50 time=156.014 ms
+64 bytes from 50.3.173.187: icmp_seq=7 ttl=50 time=159.184 ms
+64 bytes from 50.3.173.187: icmp_seq=8 ttl=50 time=155.439 ms
+64 bytes from 50.3.173.187: icmp_seq=9 ttl=50 time=160.509 ms
+64 bytes from 50.3.173.187: icmp_seq=10 ttl=50 time=157.516 ms
+64 bytes from 50.3.173.187: icmp_seq=11 ttl=50 time=155.956 ms
+64 bytes from 50.3.173.187: icmp_seq=12 ttl=50 time=157.743 ms
+64 bytes from 50.3.173.187: icmp_seq=13 ttl=50 time=156.014 ms
+64 bytes from 50.3.173.187: icmp_seq=14 ttl=50 time=155.221 ms
+64 bytes from 50.3.173.187: icmp_seq=15 ttl=50 time=168.543 ms
+64 bytes from 50.3.173.187: icmp_seq=16 ttl=50 time=171.866 ms
+64 bytes from 50.3.173.187: icmp_seq=17 ttl=50 time=155.249 ms
+64 bytes from 50.3.173.187: icmp_seq=18 ttl=50 time=160.260 ms
+64 bytes from 50.3.173.187: icmp_seq=19 ttl=50 time=155.409 ms
+64 bytes from 50.3.173.187: icmp_seq=20 ttl=50 time=155.727 ms
+64 bytes from 50.3.173.187: icmp_seq=21 ttl=50 time=156.822 ms
+64 bytes from 50.3.173.187: icmp_seq=22 ttl=50 time=157.163 ms
+64 bytes from 50.3.173.187: icmp_seq=23 ttl=50 time=159.225 ms
+64 bytes from 50.3.173.187: icmp_seq=24 ttl=50 time=155.234 ms
+64 bytes from 50.3.173.187: icmp_seq=25 ttl=50 time=157.225 ms
+64 bytes from 50.3.173.187: icmp_seq=26 ttl=50 time=158.346 ms
+64 bytes from 50.3.173.187: icmp_seq=27 ttl=50 time=156.005 ms
+64 bytes from 50.3.173.187: icmp_seq=28 ttl=50 time=158.355 ms
+64 bytes from 50.3.173.187: icmp_seq=29 ttl=50 time=155.263 ms
+
+--- 50.3.173.187 ping statistics ---
+30 packets transmitted, 30 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 155.221/158.361/171.866/3.953 ms
