@@ -48,7 +48,7 @@ def connect_ec2():
 sock = connect_ec2() 
 print("connected")
 f = open("/dev/random")
-for i in range(0,250): # 10 requests 
+for i in range(0,100): # 10 requests 
     syn_test(f,sock)
 f.close()
 sock.close()

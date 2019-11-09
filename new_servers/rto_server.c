@@ -63,7 +63,7 @@ void *HandleTCPClient(void* sock) {
 	//printf("someone is trying to connect\n");
 	int socket = (int) sock;
 	int req;
-	int num_req = 250;
+	int num_req = 100;
 	for(req=0;req<num_req;req++) {
 		struct tcp_info info;
 		socklen_t info_size = sizeof(info);
