@@ -63,7 +63,7 @@ void *HandleTCPClient(void* sock) {
 	//printf("someone is trying to connect\n");
 	int socket = (int) sock;
 	int req;
-	int num_req = 5000;
+	int num_req = 500;
 	for(req=0;req<num_req;req++) {
 		struct tcp_info info;
 		socklen_t info_size = sizeof(info);
@@ -102,7 +102,7 @@ void *HandleTCPClient(void* sock) {
 }//end HandleTCPClient
 
 int main(int argc, char** argv) {
-	printf("void* = %d\nint = %d\n", sizeof(void*), sizeof(int));
+	//printf("void* = %d\nint = %d\n", sizeof(void*), sizeof(int));
 	int port;
 	// take in a port from argv 
 	if (argc == 2) {
