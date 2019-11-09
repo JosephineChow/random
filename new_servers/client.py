@@ -32,6 +32,6 @@ def syn_test(num):
     s.close()
 
 threadpool = multiprocessing.Pool(20)
-threadpool.map_async(syn_test, xrange(300))
+threadpool.map_async(syn_test, xrange(100))
 threadpool.close()
 threadpool.join()
