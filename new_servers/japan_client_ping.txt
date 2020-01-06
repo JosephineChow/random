@@ -1,0 +1,20 @@
+PING 89.187.161.162 (89.187.161.162): 56 data bytes
+64 bytes from 89.187.161.162: icmp_seq=0 ttl=54 time=34.522 ms
+64 bytes from 89.187.161.162: icmp_seq=1 ttl=54 time=39.774 ms
+64 bytes from 89.187.161.162: icmp_seq=2 ttl=54 time=43.290 ms
+64 bytes from 89.187.161.162: icmp_seq=3 ttl=54 time=36.385 ms
+64 bytes from 89.187.161.162: icmp_seq=4 ttl=54 time=52.715 ms
+64 bytes from 89.187.161.162: icmp_seq=5 ttl=54 time=35.949 ms
+64 bytes from 89.187.161.162: icmp_seq=6 ttl=54 time=47.373 ms
+64 bytes from 89.187.161.162: icmp_seq=7 ttl=54 time=53.443 ms
+64 bytes from 89.187.161.162: icmp_seq=8 ttl=54 time=41.160 ms
+64 bytes from 89.187.161.162: icmp_seq=9 ttl=54 time=43.010 ms
+64 bytes from 89.187.161.162: icmp_seq=10 ttl=54 time=41.113 ms
+64 bytes from 89.187.161.162: icmp_seq=11 ttl=54 time=34.863 ms
+64 bytes from 89.187.161.162: icmp_seq=12 ttl=54 time=40.656 ms
+64 bytes from 89.187.161.162: icmp_seq=13 ttl=54 time=42.371 ms
+64 bytes from 89.187.161.162: icmp_seq=14 ttl=54 time=37.718 ms
+
+--- 89.187.161.162 ping statistics ---
+15 packets transmitted, 15 packets received, 0.0% packet loss
+round-trip min/avg/max/stddev = 34.522/41.623/53.443/5.639 ms
